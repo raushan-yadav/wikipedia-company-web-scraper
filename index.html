@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Women's Day — Gunuu 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --rose:  #c94f6a;
+  --blush: #f0a0b5;
+  --deep:  #6b1f35;
+  --cream: #fdf4f0;
+  --petal: #fce8ee;
+  --soft:  #8a3a50;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+.cursor {
+  position: fixed;
+  width: 18px; height: 18px;
+  background: radial-gradient(circle, var(--rose), transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: multiply;
+  transition: transform 0.08s ease;
+}
+.cursor-trail {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--blush);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.25s ease;
+  opacity: 0.6;
+}
+
+.petals {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+.petal {
+  position: absolute;
+  top: -80px;
+  opacity: 0;
+  animation: petalFall linear infinite;
+}
+@keyframes petalFall {
+  0%   { transform: translateY(0) rotate(0deg) translateX(0px); opacity: 0; }
+  8%   { opacity: 0.75; }
+  92%  { opacity: 0.4; }
+  100% { transform: translateY(110vh) rotate(400deg) translateX(60px); opacity: 0; }
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  padding: 60px 24px;
+  text-align: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 20%, rgba(220,100,130,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(200,80,110,0.14) 0%, transparent 60%),
+    linear-gradient(160deg, #fdf4f0 0%, #fce8ee 50%, #f9dde8 100%);
+  z-index: -1;
+}
+
+.hero-circle {
+  position: absolute;
+  width: 520px; height: 520px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(200,80,110,0.12);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 30s linear infinite;
+}
+.hero-circle::before {
+  content: '';
+  position: absolute; inset: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(200,80,110,0.08);
+  animation: spin 20s linear infinite reverse;
+}
+@keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+.hero-rose {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  animation: roseFloat 3s ease-in-out infinite, fadeUp 1s ease both;
+  display: block;
+}
+@keyframes roseFloat {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50%       { transform: translateY(-14px) rotate(5deg); }
+}
+
+.badge {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rose);
+  border: 1px solid rgba(200,80,110,0.3);
+  border-radius: 40px;
+  padding: 7px 22px;
+  margin-bottom: 28px;
+  background: rgba(200,80,110,0.05);
+  animation: fadeUp 1s 0.15s ease both;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  font-weight: 700;
+  color: var(--deep);
+  line-height: 1.1;
+  margin-bottom: 8px;
+  animation: fadeUp 1s 0.3s ease both;
+}
+h1 em {
+  display: block;
+  font-style: italic;
+  color: var(--rose);
+  font-size: 1.1em;
+  margin-top: 4px;
+}
+
+.hero-sub {
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  font-weight: 300;
+  color: var(--soft);
+  margin: 24px 0 44px;
+  line-height: 1.8;
+  max-width: 480px;
+  animation: fadeUp 1s 0.45s ease both;
+}
+.hero-sub em { font-style: italic; color: var(--rose); }
+
+.scroll-hint {
+  font-size: 1.8rem;
+  cursor: pointer;
+  animation: fadeUp 1s 0.7s ease both, bounce 2s 2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(10px); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* SECTIONS */
+.section {
+  position: relative;
+  z-index: 2;
+  padding: 100px 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.section-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--blush);
+  margin-bottom: 16px;
+  display: block;
+}
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 400;
+  color: var(--deep);
+  line-height: 1.25;
+  margin-bottom: 30px;
+}
+h2 em { font-style: italic; color: var(--rose); }
+.prose {
+  font-size: clamp(1rem, 2.2vw, 1.22rem);
+  font-weight: 300;
+  color: var(--soft);
+  line-height: 2;
+  margin-bottom: 20px;
+}
+.prose strong { font-weight: 600; color: var(--deep); font-style: italic; }
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 60px auto;
+  max-width: 360px;
+  position: relative;
+  z-index: 2;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(200,80,110,0.3), transparent);
+}
+.divider span { font-size: 1.2rem; color: var(--rose); }
+
+/* REASON CARDS */
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 48px 0;
+  text-align: left;
+}
+.reason-card {
+  background: white;
+  border: 1px solid rgba(200,80,110,0.12);
+  border-radius: 20px;
+  padding: 32px 28px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+.reason-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(200,80,110,0.12);
+}
+.reason-card .emoji { font-size: 2rem; margin-bottom: 14px; display: block; }
+.reason-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--deep);
+  margin-bottom: 8px;
+}
+.reason-card p { font-size: 0.95rem; color: var(--soft); line-height: 1.7; font-weight: 300; }
+
+/* QUOTE CARD */
+.quote-card {
+  background: linear-gradient(135deg, rgba(200,80,110,0.08), rgba(200,80,110,0.03));
+  border: 1px solid rgba(200,80,110,0.18);
+  border-radius: 24px;
+  padding: 48px 40px;
+  margin: 48px 0;
+  position: relative;
+  overflow: hidden;
+}
+.quote-card::before {
+  content: '"';
+  position: absolute;
+  top: -20px; left: 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 10rem;
+  color: rgba(200,80,110,0.08);
+  line-height: 1;
+}
+.quote-card p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.15rem, 3vw, 1.55rem);
+  color: var(--rose);
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+/* FINAL */
+.final {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  padding: 80px 24px;
+  text-align: center;
+  background: linear-gradient(170deg, transparent, rgba(200,80,110,0.06) 50%, transparent);
+}
+.final h2 { font-size: clamp(2rem, 6vw, 3.8rem); font-weight: 700; margin-bottom: 24px; }
+
+.heart-pulse {
+  display: inline-block;
+  font-size: 2.4rem;
+  margin: 32px 0;
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15%       { transform: scale(1.35); }
+  30%       { transform: scale(1); }
+  45%       { transform: scale(1.2); }
+}
+
+.signature-wrap { margin-top: 56px; }
+.signature-wrap p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blush);
+  margin-bottom: 10px;
+}
+.sig-name {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: var(--rose);
+}
+.flowers-row { margin-top: 44px; font-size: 2rem; letter-spacing: 14px; }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.85s ease, transform 0.85s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 600px) {
+  .hero-circle { width: 300px; height: 300px; }
+  .quote-card { padding: 32px 22px; }
+  .reasons { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+<div class="petals" id="petals"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-circle"></div>
+  <span class="hero-rose">🌹</span>
+  <div class="badge">8th March · International Women's Day</div>
+  <h1>Happy Women's Day <em>Gunuu ♡</em></h1>
+  <p class="hero-sub">
+    Tum sirf meri girlfriend nahi ho —<br>
+    tum meri <em>sabse badi strength</em> ho.
+  </p>
+  <span class="scroll-hint" onclick="document.getElementById('main').scrollIntoView({behavior:'smooth'})">🌸</span>
+</section>
+
+<div id="main">
+
+  <div class="divider reveal"><span>✦</span></div>
+
+  <!-- Section 1 -->
+  <section class="section reveal">
+    <span class="section-label">what makes you, you</span>
+    <h2>Extraordinary <em>in every way</em></h2>
+    <p class="prose">
+      Jis tarah tum muskurati ho, jis tarah tum sab kuch sambhalti ho,
+      jis tarah tum bina kuch kahe <strong>sab samajh leti ho</strong> —
+      yeh sab milake tumhe extraordinary banata hai.
+    </p>
+    <p class="prose">
+      Har roz tum mujhe remind karti ho ki <strong>strong hona aur pyaara hona</strong>
+      saath saath chal sakta hai. Aur yeh rare hai, Gunuu.
+    </p>
+
+    <div class="reasons">
+      <div class="reason-card">
+        <span class="emoji">💫</span>
+        <h3>Tumhari Smile</h3>
+        <p>Jo ek second mein poora room roshan kar deti hai.</p>
+      </div>
+      <div class="reason-card">
+        <span class="emoji">🧠</span>
+        <h3>Tumhari Strength</h3>
+        <p>Andar se itna strong hona — yeh bohot rare hai.</p>
+      </div>
+      <div class="reason-card">
+        <span class="emoji">💗</span>
+        <h3>Tumhara Dil</h3>
+        <p>Jo sab ke liye itna bada hai, especially mere liye.</p>
+      </div>
+      <div class="reason-card">
+        <span class="emoji">✨</span>
+        <h3>Tumhari Aura</h3>
+        <p>Jab tum room mein aati ho, sab kuch thoda better ho jaata hai.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider reveal"><span>♡</span></div>
+
+  <!-- Section 2 -->
+  <section class="section reveal">
+    <span class="section-label">from my heart</span>
+    <div class="quote-card">
+      <p>
+        "Duniya mein boht saari strong women hain,<br>
+        par meri Gunuu toh sabse zyada pyaari hai." 💗
+      </p>
+    </div>
+    <p class="prose">
+      Aaj dono ek doosre se door hain, lekin mera dil tumhare paas hi hai —
+      <strong>aaj, kal, aur hamesha.</strong>
+    </p>
+    <p class="prose">
+      Distance sirf geography hai. Mera pyaar toh tumhare saath hi rehta hai,
+      har pal, bina kisi break ke. 🌸
+    </p>
+  </section>
+
+  <div class="divider reveal"><span>✦</span></div>
+
+  <!-- Final -->
+  <section class="final reveal">
+    <h2>You deserve every <em>beautiful thing</em> this world has to offer.</h2>
+    <span class="heart-pulse">💖</span>
+    <p class="prose">
+      Happy Women's Day, meri jaan.<br>
+      Aaj aur hamesha — <strong>tum special ho.</strong>
+    </p>
+    <div class="signature-wrap">
+      <p>always & forever yours,</p>
+      <div class="sig-name">Raushan ♡</div>
+    </div>
+    <div class="flowers-row">🌷 🌸 🌺</div>
+  </section>
+
+</div>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const trail  = document.getElementById('cursorTrail');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+  setTimeout(() => {
+    trail.style.left = e.clientX + 'px';
+    trail.style.top  = e.clientY + 'px';
+  }, 80);
+});
+
+// Petal rain
+const emojis = ['🌸','🌹','🌷','💮','💗','🏵️','✨','🌺'];
+const container = document.getElementById('petals');
+for (let i = 0; i < 30; i++) {
+  const p = document.createElement('div');
+  p.className = 'petal';
+  p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  p.style.left = Math.random() * 100 + 'vw';
+  p.style.animationDuration = (7 + Math.random() * 10) + 's';
+  p.style.animationDelay    = (Math.random() * 12) + 's';
+  p.style.fontSize           = (0.8 + Math.random() * 1.1) + 'rem';
+  container.appendChild(p);
+}
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
+
